@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ncktest/pages/home.dart';
 
-class AppointmentSuccess extends StatelessWidget {
-  const AppointmentSuccess({Key? key}) : super(key: key);
+class OrderBooked extends StatelessWidget {
+  const OrderBooked({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +15,24 @@ class AppointmentSuccess extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: 100.h,
+                          height: 200.h,
                         ),
                         Center(
                           child: CircleAvatar(
-                            backgroundColor: Colors.green,
-                            radius: 50,
-                            child: Icon(
-                              Icons.done_outlined,
-                              color: Colors.white,
-                              size: 24,
-                            ),
-                          ),
+                              backgroundColor: Colors.green,
+                              radius: 50,
+                              child: Container(
+                                height: 48,width: 48,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        width: 3, color: Colors.white)),
+                                child: Icon(
+                                  Icons.done_outlined,
+                                  color: Colors.white,
+                                  size: 24,
+                                ),
+                              )),
                         ),
                         SizedBox(
                           height: 30.h,
@@ -52,9 +58,11 @@ class AppointmentSuccess extends StatelessWidget {
                             padding:
                                 const EdgeInsets.only(left: 16.0, right: 16),
                             child: Container(
-                                decoration: BoxDecoration(color: Colors.green),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Colors.green),
                                 //inner container
-                                height: 48, //height of inner container
+                                height: 56, //height of inner container
                                 // width:
                                 //     double.infinity, //width to 100% match to parent container.
                                 // color: Colors.yellow,
@@ -62,8 +70,9 @@ class AppointmentSuccess extends StatelessWidget {
                                   child: Text(
                                     'Home',
                                     style: TextStyle(
+                                        color: Colors.white,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 12),
+                                        fontSize: 14),
                                   ),
                                 )), //background color of inner container
                           ),

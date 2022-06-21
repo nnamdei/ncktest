@@ -100,18 +100,24 @@ class _DeliveryAddressState extends State<DeliveryAddress> {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: ListTile(
-                title: Text('32b Oxley Street, Ilaje Lekki Lagos'),
-                subtitle: Text(
-                  'Change',
-                  style: TextStyle(color: Colors.green),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                trailing:
-                    Radio(value: true, groupValue: false, onChanged: onChanged),
+                child: ListTile(
+                  title: Text('32b Oxley Street, Ilaje Lekki Lagos'),
+                  subtitle: Text(
+                    'Change',
+                    style: TextStyle(color: Colors.green),
+                  ),
+                  trailing: Radio(
+                      value: true, groupValue: false, onChanged: onChanged),
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 16.0, right: 16),
+              padding: const EdgeInsets.only(left: 16.0, right: 16, top: 16),
               child: Row(
                 children: [
                   Icon(
