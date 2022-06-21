@@ -7,8 +7,9 @@ class Checkout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
+        height: 48,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16), color: Colors.greenAccent),
+            borderRadius: BorderRadius.circular(12), color: Colors.greenAccent),
         child: Center(
           child: Text(
             'Payment',
