@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ncktest/pages/home.dart';
 
 class Nav extends StatefulWidget {
   const Nav({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ List<Widget> _children = [];
 class _NavState extends State<Nav> {
   @override
   void initState() {
-    //  _children = [Container(),Search(),AppointmentPage(),Profile()];
+    _children = [Homepage(), Container(), Container(), Container()];
     super.initState();
   }
 
@@ -39,7 +41,8 @@ class _NavState extends State<Nav> {
         onTap: tabItem,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.house),
+            // icon: Icon(Icons.house),
+            icon: FaIcon(FontAwesomeIcons.house),
             label: "Home",
           ),
           BottomNavigationBarItem(
@@ -47,7 +50,7 @@ class _NavState extends State<Nav> {
             label: "Card",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.credit_card_rounded),
+            icon: Icon(Icons.trending_up_outlined),
             label: "Activity",
           ),
           BottomNavigationBarItem(
