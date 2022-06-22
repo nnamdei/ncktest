@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ncktest/pages/home.dart';
+import 'package:ncktest/utils/colors.dart';
 
 class OrderBooked extends StatelessWidget {
   const OrderBooked({Key? key}) : super(key: key);
@@ -19,10 +20,11 @@ class OrderBooked extends StatelessWidget {
                         ),
                         Center(
                           child: CircleAvatar(
-                              backgroundColor: Colors.green,
+                              backgroundColor: AppColors.color1,
                               radius: 50,
                               child: Container(
-                                height: 48,width: 48,
+                                height: 48,
+                                width: 48,
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
@@ -49,7 +51,7 @@ class OrderBooked extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Homepage()));
@@ -60,7 +62,7 @@ class OrderBooked extends StatelessWidget {
                             child: Container(
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
-                                    color: Colors.green),
+                                    color: AppColors.color1),
                                 //inner container
                                 height: 56, //height of inner container
                                 // width:

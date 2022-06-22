@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ncktest/pages/home.dart';
+import 'package:ncktest/utils/colors.dart';
 
 class Nav extends StatefulWidget {
   const Nav({Key? key}) : super(key: key);
@@ -25,8 +26,8 @@ class _NavState extends State<Nav> {
       backgroundColor: Colors.white,
       body: IndexedStack(index: _currentIndex, children: _children),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.greenAccent,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: AppColors.color1,
+        unselectedItemColor: AppColors.color12,
         selectedLabelStyle: const TextStyle(
           // fontFamily: gtwalsheimregular,
           fontSize: 14,

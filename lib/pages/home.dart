@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ncktest/pages/top_up.dart';
+import 'package:ncktest/utils/colors.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -9,17 +11,21 @@ class Homepage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [NewWidget3(size: size), NewWidget2(size: size)],
+      body: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        builder: (context, child) => SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [TopSection(size: size), MidSection(size: size)],
+          ),
         ),
       ),
     );
   }
 }
 
-class NewWidget3 extends StatelessWidget {
-  const NewWidget3({
+class TopSection extends StatelessWidget {
+  const TopSection({
     Key? key,
     required this.size,
   }) : super(key: key);
@@ -29,42 +35,48 @@ class NewWidget3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: size.height * 0.65,
+      height: size.height * 0.6,
       child: Stack(children: [
         Container(
-          height: size.height * 0.30,
+          height: size.height * 0.25,
           width: size.width,
-          decoration: BoxDecoration(color: Colors.green),
+          decoration: BoxDecoration(color: AppColors.color1),
           child: Padding(
             padding: const EdgeInsets.only(left: 16.0, right: 16),
-            child: Row(children: [
-              Container(
-                child: Image.asset('name'),
-                height: 32,
-                width: 32,
-                decoration: BoxDecoration(
-                    border: Border.all(width: 2, color: Colors.white),
-                    shape: BoxShape.circle),
-              ),
-              Text(
-                'Paul N.',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
-              ),
-              Spacer(),
-              Container(
-                height: 48,
-                width: 48,
-                child: Center(
-                    child: Icon(
-                  Icons.notifications_none_rounded,
-                  color: Colors.green,
-                )),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12)),
-              )
-            ]),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Row(children: [
+                Container(
+                  child: Icon(Icons.person_outline_sharp,color:Colors.white),
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 2, color: Colors.white),
+                      shape: BoxShape.circle),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'Paul N.',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w500),
+                ),
+                Spacer(),
+                Container(
+                  height: 48,
+                  width: 48,
+                  child: Center(
+                      child: Icon(
+                    Icons.notifications_none_rounded,
+                    color: AppColors.color1,
+                  )),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12)),
+                )
+              ]),
+            ),
           ),
         ),
         NewWidget(size: size),
@@ -87,12 +99,13 @@ class NewWidget extends StatelessWidget {
       bottom: 0,
       left: 6,
       right: 10,
-      top: 170,
+      top: 125,
       child: Column(
         children: [
           Container(
             decoration: BoxDecoration(
-                color: Colors.yellow, borderRadius: BorderRadius.circular(16)),
+                color: AppColors.color2,
+                borderRadius: BorderRadius.circular(16)),
             height: 160,
             width: size.width,
             child: Padding(
@@ -106,10 +119,22 @@ class NewWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        child: Text('Cylinder ID: #942'),
+                        height: 24,
+                        width: 150,
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Center(
+                            child: Text('Cylinder ID: #942',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.color8,
+                                )),
+                          ),
+                        ),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: Colors.yellow[400]),
+                            borderRadius: BorderRadius.circular(6),
+                            color: AppColors.color3),
                       ),
                       SizedBox(
                         height: 10,
@@ -133,16 +158,20 @@ class NewWidget extends StatelessWidget {
                         height: 16,
                       ),
                       Container(
-                        child: Text(
-                          'Last purchase was 2 hours ago',
-                          style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500),
+                        height: 24,
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text(
+                            'Last purchase was 2 hours ago',
+                            style: TextStyle(
+                                color: AppColors.color9,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: Colors.yellow[400]),
+                            borderRadius: BorderRadius.circular(6),
+                            color: AppColors.color3),
                       ),
                     ],
                   ),
@@ -156,7 +185,26 @@ class NewWidget extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 16,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 5,
+                backgroundColor: AppColors.color10,
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              CircleAvatar(
+                radius: 5,
+                backgroundColor: AppColors.color11,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 16,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -165,7 +213,7 @@ class NewWidget extends StatelessWidget {
                   height: 56,
                   width: 160,
                   decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: AppColors.color1,
                       borderRadius: BorderRadius.circular(12)),
                   child: Center(
                     child: Text(
@@ -185,7 +233,7 @@ class NewWidget extends StatelessWidget {
                     height: 56,
                     width: 160,
                     decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: AppColors.color1,
                         borderRadius: BorderRadius.circular(12)),
                     child: Center(
                       child: Text(
@@ -221,8 +269,8 @@ class NewWidget extends StatelessWidget {
   }
 }
 
-class NewWidget2 extends StatelessWidget {
-  const NewWidget2({
+class MidSection extends StatelessWidget {
+  const MidSection({
     Key? key,
     required this.size,
   }) : super(key: key);
@@ -232,75 +280,78 @@ class NewWidget2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 250,
+      top: 200,
       child: Container(
-        height: size.height * 0.35,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                SizedBox(
-                  width: 10,
-                ),
-                Text('Activity'),
-                Spacer(),
-                Text(
-                  'view all',
-                  style: TextStyle(
-                    color: Colors.green,
+        height: size.height * 0.4,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Row(
+                children: [
+                  SizedBox(
+                    width: 10,
                   ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  color: Colors.green,
-                  size: 10,
-                ),
-                SizedBox(
-                  width: 10,
-                )
-              ],
-            ),
-            Container(
-              height: size.height,
-              child: ListView.separated(
-                itemCount: 3,
-                separatorBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 16.0, right: 16),
-                    child: Divider(
-                      color: Colors.grey,
+                  Text('Activity'),
+                  Spacer(),
+                  Text(
+                    'view all',
+                    style: TextStyle(
+                      color: Colors.green,
                     ),
-                  );
-                },
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    leading: Image.asset(
-                      'assets/images/oando.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    title: Text(
-                      'Swap Order',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(
-                      '17 Agustus 2021',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500, color: Colors.grey),
-                    ),
-                    trailing: Text(
-                      '- N 4,500',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  );
-                },
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_outlined,
+                    color: Colors.green,
+                    size: 10,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  )
+                ],
               ),
-            )
-          ],
+              Container(
+                height: size.height,
+                child: ListView.separated(
+                  itemCount: 3,
+                  separatorBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 16.0, right: 16),
+                      child: Divider(
+                        color: Colors.grey,
+                      ),
+                    );
+                  },
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      leading: Image.asset(
+                        'assets/images/oando.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      title: Text(
+                        'Swap Order',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        '17 Agustus 2021',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, color: Colors.grey),
+                      ),
+                      trailing: Text(
+                        '- N 4,500',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
